@@ -1,5 +1,7 @@
 #pragma once
-#include "ValorUtilsh.h"
+#include "ValorUtils.h"
+#include "GameWindow.h"
+
 namespace Valor
 {
 	class VALOR_API ValorApp
@@ -10,6 +12,7 @@ namespace Valor
 	protected:
 		ValorApp();
 	private:
+		GameWindow mGameWindow;
 
 	};
 }

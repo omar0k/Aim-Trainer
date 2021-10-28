@@ -1,5 +1,7 @@
 #pragma once
 #include "ValorApp.h"
+#include "ValorUtils.h"
+#include "GameWindow.h"
 
 #define START_VALOR_GAME(classname) \
 int main()\

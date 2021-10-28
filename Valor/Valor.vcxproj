@@ -90,7 +90,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>C:\Users\Omar\Desktop\Classes\2021 FALL\Game Engines\MyGameEngine\MyGame\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Omar\Desktop\Classes\2021 FALL\Game Engines\MyGameEngine\MyGame\Valor;C:\Users\Omar\Desktop\Classes\2021 FALL\Game Engines\MyGameEngine\MyGame\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -107,7 +107,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>C:\Users\Omar\Desktop\Classes\2021 FALL\Game Engines\MyGameEngine\MyGame\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Omar\Desktop\Classes\2021 FALL\Game Engines\MyGameEngine\MyGame\Valor;C:\Users\Omar\Desktop\Classes\2021 FALL\Game Engines\MyGameEngine\MyGame\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -122,7 +122,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>VALOR_WINDOWS;VALOR_LIB;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Omar\Desktop\Classes\2021 FALL\Game Engines\MyGameEngine\MyGame\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Omar\Desktop\Classes\2021 FALL\Game Engines\MyGameEngine\MyGame\Valor;C:\Users\Omar\Desktop\Classes\2021 FALL\Game Engines\MyGameEngine\MyGame\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -137,7 +137,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>VALOR_WINDOWS;VALOR_LIB;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Omar\Desktop\Classes\2021 FALL\Game Engines\MyGameEngine\MyGame\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Omar\Desktop\Classes\2021 FALL\Game Engines\MyGameEngine\MyGame\Valor;C:\Users\Omar\Desktop\Classes\2021 FALL\Game Engines\MyGameEngine\MyGame\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -147,12 +147,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="GameWindow.h" />
+    <ClInclude Include="GLFWImpl\GLFWimplementation.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Valor.h" />
     <ClInclude Include="ValorApp.h" />
-    <ClInclude Include="ValorUtilsh.h" />
+    <ClInclude Include="ValorUtils.h" />
+    <ClInclude Include="WindowImplementation.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="GameWindow.cpp" />
+    <ClCompile Include="GLFWImpl\GLFWimplementation.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
