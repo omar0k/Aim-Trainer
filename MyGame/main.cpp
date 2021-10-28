@@ -1,5 +1,4 @@
 #include "Valor.h"
-
 class MyGameApp :public Valor::ValorApp
 {
 	void OnUpdate() override
