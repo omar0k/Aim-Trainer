@@ -5,11 +5,11 @@ namespace Valor {
 	GameWindow::GameWindow()
 	{
 #ifdef VALOR_WINDOWS
-		mWindow = new GLFWimplementation;
+		mWindow = std::unique_ptr<WindowImplementation>{ new GLFWimplementation() };
 #elif VALOR_MAC
-		mWindow = new GLFWimplementation;
-#elif VALOR_LINUX
-		mWindow = new GLFWimplementation;
+		mWindow = std::unique_ptr<WindowImplementation>{ new GLFWimplementation() };
+#elif VALOR_LINUX						
+		mWindow = std::unique_ptr<WindowImplementation>{ new GLFWimplementation() };
 #else
 		#only_Windows_Linux_Mac_are_supported
 #endif

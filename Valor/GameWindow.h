@@ -13,7 +13,7 @@ namespace Valor
 		int GetWindowWidth() const;
 		int GetWindowHeight() const;
 	private:
-		WindowImplementation* mWindow;
+		std::unique_ptr<WindowImplementation> mWindow;
 	};
 
 }

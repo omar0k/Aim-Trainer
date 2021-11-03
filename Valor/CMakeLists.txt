@@ -1,6 +1,6 @@
-set(SOURCE_FILES ValorApp.cpp)
+set(SOURCE_FILES ValorApp.cpp GameWindow.cpp GLFWImpl/GLFWimplementation.cpp)
 
-set(HEADER_FILES Valor.h ValorApp.h ValorUtils.h)
+set(HEADER_FILES Valor.h ValorApp.h ValorUtils.h WindowImplementation.h GameWindow.h GLFWImpl/GLFWimplementation.h)
 
 add_library(valor_lib SHARED ${SOURCE_FILES} ${HEADER_FILES})
 
@@ -11,3 +11,4 @@ add_definitions(-DVALOR_LIB)
 target_link_libraries(valor_lib glfw)
 
 include_directories(../glfw/include)
+include_directories(../Valor)
