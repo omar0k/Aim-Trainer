@@ -2,6 +2,7 @@
 #include "ValorApp.h"
 #include "ValorUtils.h"
 #include "GameWindow.h"
+#include "Sprite.h"
 
 #define START_VALOR_GAME(classname) \
 int main()\

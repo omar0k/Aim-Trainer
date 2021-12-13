@@ -2,6 +2,7 @@
 #include "ValorUtils.h"
 #include "GameWindow.h"
 
+
 namespace Valor
 {
 	class VALOR_API ValorApp
