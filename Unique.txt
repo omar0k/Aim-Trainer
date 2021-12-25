@@ -1,0 +1,10 @@
+At first I wanted to create a target shooting game using my mouse but I found that to be difficult
+with the amount of time i had. I couldn't figure out how to connect my mouse position and clicks with
+the unit targets. So i created a game where my mHero unit shoots units that destroy my targets. 
+The game involves projectiles. The unit is always shooting as i figured if i made a shoot button,
+i will need to make on key release to make it stop shooting. THere is also a way to change the 
+rate of fire so if i want to continue to work on the game and add extra features like powerups
+and other types of enemies and levels. I also did not have time to make a losing or winning state which 
+is a needed addition.
+
+Demo:: https://streamable.com/q3cjoe 

@@ -21,6 +21,7 @@ namespace Valor
 	private:
 
 		Renderer();
+
 		inline static Renderer* mInstance{ nullptr };
 		inline static std::unique_ptr<RendererImplementation> mImplementation;
 	};

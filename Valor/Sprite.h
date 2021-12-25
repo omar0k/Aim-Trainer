@@ -3,7 +3,6 @@
 #include "pch.h"
 #include "ValorUtils.h"
 #include "SpriteImplementation.h"
-#include "OpenGLImpl/OpenGLSprite.h"
 namespace Valor {
 	class VALOR_API Sprite
 	{

@@ -1,5 +1,6 @@
 #include "Sprite.h"
 #include "pch.h"
+#include "OpenGLImpl/OpenGLSprite.h"
 
 namespace Valor {
 	Sprite::Sprite()

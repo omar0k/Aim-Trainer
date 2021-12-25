@@ -1,4 +1,5 @@
 #include "Shader.h"
+#include "OpenGLImpl/OpenGLShader.h"
 namespace Valor
 	{
 	Shader::Shader()
@@ -13,6 +14,11 @@ namespace Valor
 	void Valor::Shader::Load(const std::string& vertexFile, const std::string& fragmentFile)
 	{
 		mShader->Load(vertexFile, fragmentFile);
+	}
+
+	void Shader::SetVec2IntUniform(const std::string& unifName, int first, int second)
+	{
+		mShader->SetVec2IntUniform(unifName, first, second);
 	}
 
 	void Valor::Shader::Use()

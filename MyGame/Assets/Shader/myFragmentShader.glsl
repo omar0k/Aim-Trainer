@@ -1,5 +1,5 @@
 #version 330 core
-	in Vec2 TexCoords;
+	in vec2 TexCoords;
 	uniform sampler2D mypicture;
 	out vec4 FragColor;
 	void main()

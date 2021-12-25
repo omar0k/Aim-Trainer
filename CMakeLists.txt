@@ -15,7 +15,11 @@ elseif(UNIX)
 	add_definitoins(-DVALOR_LINUX)
 endif()
 
+add_definitions(-DVALOR_OPENGL)
+
 
 add_subdirectory(MyGame)
 add_subdirectory(Valor)
 add_subdirectory(glfw)
+add_subdirectory(glad)
+add_subdirectory(stbi)

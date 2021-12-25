@@ -6,96 +6,73 @@
 #include "Shader.h"
 #define GLFW_INCLUDE_NONE
 #include "stb_image.h"
-//GLFW
+#include "Renderer.h"
+
+//
 namespace Valor
+
 {
 	void ValorApp::Run()
 	{
-		std::cout << "Valor is running..." << std::endl;
-		//GLFWwindow* window;
-		//glfwInit();
-		mGameWindow.createWindow(800, 600, "Test");
-		if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-		{
-			std::cout << "Glad failed to initialize" << std::endl;
-		}
-		glEnable(GL_BLEND);
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-		float vertices[] = {
-			-0.5f, -0.5f, 0.0f, 0.0f, //bottom left
-			-0.5f,  0.5f, 0.0f, 1.0f, //top left
-			 0.5f, -0.5f, 1.0f, 0.0f, // bottom right
-			 0.5f,  0.5f, 1.0f, 1.0f  //top right
-		};
-
-		unsigned indeces[] =
-		{
-			0,1,2,
-			1,2,3
-		};
-		unsigned int VBO, VAO, EBO;
-		glGenVertexArrays(1, &VAO);
-		glGenBuffers(1, &VBO);
-		glGenBuffers(1, &EBO);
-		glBindVertexArray(VAO);
-
-		glBindBuffer(GL_ARRAY_BUFFER, VBO);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
-		glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)0);
-		glEnableVertexAttribArray(0);
-
-		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)(2*sizeof(float)));
-		glEnableVertexAttribArray(1);
-
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indeces), indeces, GL_STATIC_DRAW);
-
-
-
+		VALOR_LOG("Valor app running...");
+		//ValorApp::ValorApp();
 		
-		//GLFWmonitor* mon = glfwGetPrimaryMonitor();
-		//window = glfwCreateWindow(800, 600, "Test", NULL, NULL);
-		const char* fragmentShaderSource = R"(
-			#version 330 core
-			out vec4 FragColor;
-			void main()
-			{
-				FragColor=vec4(1.0f,0.5f,0.2f,1.0f);
-			}			
-		)";
-		//shaders
-		Valor::Shader myShader;
-		myShader.Load("Assets/Shader/myVertexShader.glsl", "Assests/Shader/myFragmentShader.glsl");
-		
-		//Texture
-		Valor::Sprite fish;
-		fish.LoadImage("Assests/Textures/awesomeface.png");
+			
+		mTimeOfNextFrame = std::chrono::steady_clock::now() + mFrameDuration;
+		//Renderer::Draw(happyface, 100, 50, happyface.GetWidth(), happyface.GetHeight(), myShader);
 
 		while (true)
 		{
+			Renderer::ClearFrame();
+
 			OnUpdate();
-			glClearColor(0.0f, 0.0f, 0.5f, 1.0f);
-			glClear(GL_COLOR_BUFFER_BIT);
 
-			fish.Bind();
-
-			myShader.Use();
-			glBindVertexArray(VAO);
-			glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+			std::this_thread::sleep_until(mTimeOfNextFrame);
 
 			mGameWindow.SwapBuffers();
+
 			mGameWindow.PollEvents();
-			//glfwSwapBuffers(window);
-			//glfwPollEvents();
+
+
+			mTimeOfNextFrame += mFrameDuration;
+
+
 		}
+		Renderer::ShutDown();
+
 	}
 	void ValorApp::OnUpdate()
 	{
 
 	}
+	void ValorApp::OnKeyPressed(KeyPressedEvent& event)
+	{
+		VALOR_LOG(event.GetKeyCode());
+	}
+	int ValorApp::GetGameWindowWidth() const
+	{
+		return mGameWindow.GetWindowWidth();
+	}
+	int ValorApp::GetGameWindowHeight() const
+	{
+		return mGameWindow.GetWindowHeight();
+	}
+	
 	ValorApp::ValorApp()
 	{
+		mGameWindow.createWindow(800, 600, "Aim_Trainer");
+
+		mGameWindow.SetKeyPressedCallback([this](KeyPressedEvent& event) {
+			OnKeyPressed(event);
+			});
+		mGameWindow.SetMouseClickedCallback([this](KeyPressedEvent& event) {
+			OnKeyPressed(event);
+		});
+		mGameWindow.SetCursorPosCallback([this](KeyPressedEvent& event) {
+			OnKeyPressed(event);
+			});
+
+		Renderer::Init();
+		
 	}
 }

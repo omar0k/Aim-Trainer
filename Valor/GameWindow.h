@@ -1,6 +1,8 @@
 #pragma once
 #include "ValorUtils.h"
 #include "WindowImplementation.h"
+#include "pch.h"
+#include "Events.h"
 namespace Valor
 {
 	class VALOR_API GameWindow
@@ -12,6 +14,9 @@ namespace Valor
 		void PollEvents();
 		int GetWindowWidth() const;
 		int GetWindowHeight() const;
+		void SetKeyPressedCallback(std::function<void(KeyPressedEvent&)> func);
+		void SetCursorPosCallback(std::function<void(KeyPressedEvent&)>func);
+		void SetMouseClickedCallback(std::function<void(KeyPressedEvent&)>func);
 	private:
 		std::unique_ptr<WindowImplementation> mWindow;
 	};

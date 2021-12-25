@@ -36,4 +36,16 @@ namespace Valor {
 	{
 		return mWindow->GetWindowHeight();
 	}
+	void GameWindow::SetKeyPressedCallback(std::function<void(KeyPressedEvent&)> func)
+	{
+		mWindow->SetKeyPressedCallback(func);
+	}
+	void GameWindow::SetCursorPosCallback(std::function<void(KeyPressedEvent&)> func)
+	{
+		mWindow->SetCursorPosCallback(func);
+	}
+	void GameWindow::SetMouseClickedCallback(std::function<void(KeyPressedEvent&)> func)
+	{
+		mWindow->SetMouseClickedCallback(func);
+	}
 }

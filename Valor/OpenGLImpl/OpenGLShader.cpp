@@ -5,6 +5,7 @@ namespace Valor
 {
 	void OpenGLShader::Load(const std::string& vertexFile, const std::string& fragmentFile)
 	{
+
 		std::ifstream vertexFileStream{vertexFile};
 		if (!vertexFileStream.is_open())
 		{
@@ -65,6 +66,13 @@ namespace Valor
 
 		}
 
+	}
+	void OpenGLShader::SetVec2IntUniform(const std::string& unifName, int first, int second)
+	{
+		assert(mShaderPRogram);
+		glUseProgram(mShaderPRogram);
+		int location{ glGetUniformLocation(mShaderPRogram,unifName.c_str()) };
+		glUniform2i(location, first, second);
 	}
 	void OpenGLShader::Use()
 	{
