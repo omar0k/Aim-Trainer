@@ -12,10 +12,11 @@ namespace Valor {
 		void Load(const std::string& vertexFile, const std::string& fragmentFile);
 		void SetVec2IntUniform(const std::string& unifName, int first, int second);
 		void Use();
+		std::string ReadEntireTextFile(const std::string& path);
 	private:
 		std::unique_ptr<ShaderImplementation> mShader;
 
 	};
-
+	
 }
 

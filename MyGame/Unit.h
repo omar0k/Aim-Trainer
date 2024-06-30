@@ -4,14 +4,14 @@ class Unit
 {
 public:
 	Unit() = delete;
-	Unit(const std::string& imageFile,int xPos,int yPos, int speed);
+	Unit(const std::string& imageFile, int xPos, int yPos, int speed);
 	int GetUnitWidth() const;
 	int GetUnitHeight() const;
 	void SetPosX(int newX);
 	void SetPosY(int newY);
 	int GetPosX() const;
 	int GetPosY() const;
-	int GetSPeed() const;
+	int GetSpeed() const;
 
 	//True if units collide(overlap)
 	bool CollideWith(const Unit& other) const;
@@ -27,6 +27,7 @@ public:
 	Unit::Direction GetDirection() const;
 	void SetDirection(Unit::Direction newDirection);
 	void UpdatePosition();
+	void moveRandomDirection();
 	bool touchBottomEdge(int currY);
 	bool touchTopEdge(int currY);
 private:

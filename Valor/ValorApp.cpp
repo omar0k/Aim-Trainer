@@ -8,7 +8,6 @@
 #include "stb_image.h"
 #include "Renderer.h"
 
-//
 namespace Valor
 
 {
@@ -16,10 +15,7 @@ namespace Valor
 	{
 		VALOR_LOG("Valor app running...");
 		//ValorApp::ValorApp();
-		
-			
 		mTimeOfNextFrame = std::chrono::steady_clock::now() + mFrameDuration;
-		//Renderer::Draw(happyface, 100, 50, happyface.GetWidth(), happyface.GetHeight(), myShader);
 
 		while (true)
 		{
@@ -28,7 +24,6 @@ namespace Valor
 			OnUpdate();
 
 			std::this_thread::sleep_until(mTimeOfNextFrame);
-
 			mGameWindow.SwapBuffers();
 
 			mGameWindow.PollEvents();
@@ -49,6 +44,14 @@ namespace Valor
 	{
 		VALOR_LOG(event.GetKeyCode());
 	}
+	void ValorApp::OnMouseClicked(MouseClickedEvent& event)
+	{
+		VALOR_LOG(event.getMouseButton())
+	}
+	void ValorApp::OnMouseMoved(MouseMovedEvent& event)
+	{
+		VALOR_LOG(event.getXPos());
+	}
 	int ValorApp::GetGameWindowWidth() const
 	{
 		return mGameWindow.GetWindowWidth();
@@ -57,22 +60,24 @@ namespace Valor
 	{
 		return mGameWindow.GetWindowHeight();
 	}
-	
+
+
 	ValorApp::ValorApp()
 	{
-		mGameWindow.createWindow(800, 600, "Aim_Trainer");
 
+		mGameWindow.windowHint(GLFW_RESIZABLE, GLFW_FALSE);
+		mGameWindow.createWindow(800, 800, "Aim Trainer");
 		mGameWindow.SetKeyPressedCallback([this](KeyPressedEvent& event) {
 			OnKeyPressed(event);
 			});
-		mGameWindow.SetMouseClickedCallback([this](KeyPressedEvent& event) {
-			OnKeyPressed(event);
-		});
-		mGameWindow.SetCursorPosCallback([this](KeyPressedEvent& event) {
-			OnKeyPressed(event);
+		mGameWindow.SetMouseClickedCallback([this](MouseClickedEvent& event) {
+			OnMouseClicked(event);
+			});
+		mGameWindow.SetCursorPosCallback([this](MouseMovedEvent& event) {
+			OnMouseMoved(event);
 			});
 
 		Renderer::Init();
-		
+
 	}
 }

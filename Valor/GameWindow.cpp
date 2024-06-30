@@ -13,11 +13,15 @@ namespace Valor {
 #else
 		#only_Windows_Linux_Mac_are_supported
 #endif
-		mWindow->Init();
+			mWindow->Init();
 	}
-	void GameWindow::createWindow(int width, int height,const std::string &name)
+	void GameWindow::createWindow(int width, int height, const std::string& name)
 	{
 		mWindow->CreateWindow(width, height, name);
+	}
+	
+	void GameWindow::windowHint(int hint, int value) {
+		mWindow->WindowHint(hint, value);
 	}
 	void GameWindow::SwapBuffers()
 	{
@@ -29,7 +33,6 @@ namespace Valor {
 	}
 	int GameWindow::GetWindowWidth() const
 	{
-
 		return mWindow->GetWindowWidth();
 	}
 	int GameWindow::GetWindowHeight() const
@@ -40,11 +43,11 @@ namespace Valor {
 	{
 		mWindow->SetKeyPressedCallback(func);
 	}
-	void GameWindow::SetCursorPosCallback(std::function<void(KeyPressedEvent&)> func)
+	void GameWindow::SetCursorPosCallback(std::function<void(MouseMovedEvent&)> func)
 	{
 		mWindow->SetCursorPosCallback(func);
 	}
-	void GameWindow::SetMouseClickedCallback(std::function<void(KeyPressedEvent&)> func)
+	void GameWindow::SetMouseClickedCallback(std::function<void(MouseClickedEvent&)> func)
 	{
 		mWindow->SetMouseClickedCallback(func);
 	}

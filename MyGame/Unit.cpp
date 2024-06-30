@@ -3,6 +3,7 @@
 Unit::Unit(const std::string& imageFile, int xPos, int yPos, int speed)
 	: mPosX(xPos), mPosY(yPos), mSpeed(speed), mDirection(Direction::None)
 {
+	srand(static_cast<unsigned int>(time(nullptr)));
 	mImage.LoadImage(imageFile);
 }
 
@@ -36,7 +37,7 @@ int Unit::GetPosY() const
 	return mPosY;
 }
 
-int Unit::GetSPeed() const
+int Unit::GetSpeed() const
 {
 	return mSpeed;
 }
@@ -56,7 +57,7 @@ bool Unit::CollideWith(const Unit& other) const
 		(mPosY <= oYbottom && oYbottom <= mPosY + GetUnitHeight()) ||
 		(mPosY <= oYtop && oYtop <= mPosY + GetUnitHeight()) ||
 		(oYbottom <= mPosY && mPosY + GetUnitHeight() <= oYtop) };
-	
+
 	return intersectOnX && intersectOnY;
 }
 
@@ -74,9 +75,27 @@ void Unit::SetDirection(Unit::Direction newDirection)
 {
 	mDirection = newDirection;
 }
+void Unit::moveRandomDirection() {
+	int randomMoveX = rand() % 20 - 5; // -5 to 5
+	int randomMoveY = rand() % 20 - 5; // -5 to 5
 
+	if (isPositionPossible(mPosX + randomMoveX, mPosY)) {
+		mPosX += randomMoveX;
+	}
+	else {
+		mPosX -= randomMoveX;
+	}
+	if (isPositionPossible(mPosX, mPosY + randomMoveY))
+	{
+		mPosY += randomMoveY;
+	}
+	else {
+		mPosY -= randomMoveY;
+	}
+}
 void Unit::UpdatePosition()
 {
+
 	switch (mDirection)
 	{
 	case Direction::Down:
@@ -85,7 +104,7 @@ void Unit::UpdatePosition()
 		break;
 	case Direction::Up:
 		if (isPositionPossible(mPosX, mPosY + mSpeed))
-		mPosY += mSpeed;
+			mPosY += mSpeed;
 		break;
 	case Direction::Left:
 		if (isPositionPossible(mPosX - mSpeed, mPosY))
@@ -110,7 +129,7 @@ bool Unit::touchBottomEdge(int currY)
 
 bool Unit::touchTopEdge(int currY)
 {
-	if (currY==0)
+	if (currY == 0)
 	{
 		return true;
 	}
@@ -122,11 +141,12 @@ bool Unit::touchTopEdge(int currY)
 
 bool Unit::isPositionPossible(int newX, int newY) const
 {
-	if ((newX < 0) ||
-		(newY < 0) ||
-		(newX + mImage.GetWidth() > 800) ||
-		(newY + mImage.GetHeight() > 800)) return false;
+	int imageWidth = mImage.GetWidth();
+	int imageHeight = mImage.GetHeight();
+
+	// Check if the entire image fits within the bounds
+	if (newX < 0 || newY < 0 || newX + imageWidth > 800 || newY + imageHeight > 800)
+		return false;
 	else
 		return true;
-
 }

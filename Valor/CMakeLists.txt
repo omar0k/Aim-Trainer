@@ -45,3 +45,6 @@ include_directories(../glfw/include)
 include_directories(../Valor)
 include_directories(../Glad/include)
 include_directories(../stbi)
+include_directories(../glm)
+include_directories(../FreeType/include)
+

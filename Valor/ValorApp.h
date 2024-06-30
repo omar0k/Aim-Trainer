@@ -11,6 +11,8 @@ namespace Valor
 		void Run();
 		virtual void OnUpdate();
 		virtual void OnKeyPressed(KeyPressedEvent& event);
+		virtual void OnMouseMoved(MouseMovedEvent& event);
+		virtual void OnMouseClicked(MouseClickedEvent& event);
 		int GetGameWindowWidth() const;
 		int GetGameWindowHeight() const;
 	protected:
@@ -18,7 +20,7 @@ namespace Valor
 	private:
 		GameWindow mGameWindow;
 		std::chrono::steady_clock::time_point mTimeOfNextFrame;
-		std::chrono::milliseconds mFrameDuration{1000/FRAMES_PER_SECOND};
+		std::chrono::milliseconds mFrameDuration{ 1000 / FRAMES_PER_SECOND };
 
 	};
 }
